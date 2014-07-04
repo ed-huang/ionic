@@ -1,125 +1,66 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ionic-sample : sample of ionic kitchen sink" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Ionic-sample</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/dwerdo/ionic-sample">View on GitHub</a>
-
-          <h1 id="project_title">Ionic-sample</h1>
-          <h2 id="project_tagline">sample of ionic kitchen sink</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/dwerdo/ionic-sample/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/dwerdo/ionic-sample/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>&lt;!doctype html&gt;
-
-</p>
-     <pre><code>&lt;!-- HEADER --&gt;
-&lt;header&gt;
-    &lt;h1 class="animated bounceInDown"&gt;Crowdsourced Fog&lt;/h1&gt;
-
-    &lt;nav id="first-row"&gt;
-        &lt;input id="query" ng-model="query" placeholder="Find a Neighborhood in SF..."&gt;
-        &lt;div class="clear"&gt;&lt;/div&gt;
-    &lt;/nav&gt;
-&lt;/header&gt;
-
-
-&lt;!-- WEATHER CARDS --&gt;
-&lt;section id="wrapper"&gt;
-
-    &lt;div ng-repeat="hood in hoods | filter:query" class="neighborhood animated swing"&gt;
-        &lt;div class="card" id="{{hood.id}}" ng-class="{'sunny': weather == 'sunny', 'foggy': weather == 'foggy'}" ng-controller="NeighborhoodController" ng-init="init(hood.value)"&gt;
-
-            &lt;h3 class="hood" ng-cloak&gt;{{hood.value}}&lt;/h3&gt;
-            &lt;h4 class="weather-heading" ng-class="{'sunny': weather == 'sunny', 'foggy': weather == 'foggy'}"&gt;&lt;/h4&gt;
-
-            &lt;div id="weather-count" ng-cloak&gt;
-                &lt;span class="test left"&gt;sunny: {{data.sunny}}&lt;/span&gt;
-                &lt;span class="foggy-count right"&gt;foggy {{data.foggy}}&lt;/span&gt;
-                &lt;div class="clear"&gt;&lt;/div&gt;
-            &lt;/div&gt;
-
-            &lt;div class="controls"&gt;
-                &lt;a ng-click="updateCount('sunny')" class="button button-tiny button-highlight button-rounded"&gt;&lt;i class="icon-sun"&gt;&lt;/i&gt; Sunny&lt;/a&gt;
-                &lt;a ng-click="updateCount('foggy')" class="right button button-tiny button-primary button-rounded"&gt;&lt;i class="icon-cloud"&gt;&lt;/i&gt; Foggy&lt;/a&gt;
-                &lt;div class="clear"&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class="clear"&gt;&lt;/div&gt;
-&lt;/section&gt;
+<!doctype html>
+<html ng-app="demoApp" ng-controller="IonicDemoCtrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<link rel="stylesheet" href="ionic/css/ionic.min.css">
+<script src="ionic/js/ionic.bundle.min.js"></script>
+<script src="pages-data.js"></script>
 
 
 
-&lt;!-- FOOTER --&gt;
-&lt;footer id="firebase"&gt;
-    &lt;a href="http://www.firebase.com"&gt;&lt;img src="img/firebase.png"&gt;&lt;/a&gt;
-&lt;/footer&gt;
+<script src="index-ionic-demo-app.js"></script>
+</head>
+<body>
 
 
-&lt;!-- SOCIAL BAR --&gt;
-&lt;div id="social-bar"&gt;
-      &lt;!-- GITHUB STAR BUTTON --&gt;
-        &lt;iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=firebase&amp;repo=crowdsourced-fog&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"&gt;&lt;/iframe&gt;
 
-        &lt;!-- GITHUB FORK BUTTON --&gt;
-        &lt;iframe class="github-button" src="http://ghbtns.com/github-btn.html?user=firebase&amp;repo=crowdsourced-fog&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"&gt;&lt;/iframe&gt;
-
-        &lt;!-- TWITTER TWEET BUTTON --&gt;
-        &lt;a href="https://twitter.com/share" class="twitter-share-button" data-url="http://firebase.github.io/crowdsourced-fog/" data-text="I'm tracking the weather in SF on Crowdsourced Fog!"&gt;Tweet&lt;/a&gt;
-</code></pre>
-
-<pre><code>        &lt;!-- FACEBOOK LIKE BUTTON --&gt;
-        &lt;div class="fb-like" data-href="https://github.com/firebase/crowdsourced-fog" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"&gt;&lt;/div&gt;
-    &lt;/section&gt;
-&lt;/div&gt;
-
-&lt;!-- JAVASCRIPTS --&gt;
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.firebase.com/v0/firebase.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="js/app.js"&gt;&lt;/script&gt;
-</code></pre>
-
-<p></p> <h1></h1>
-
-<p>
-</p>
-<p>
-</p>
-
-<div>
-  <div>
+<div class="pane">
+  <div ng-include="'demo-list.html'">
   </div>
 </div>
 
-<p></p>
 
-<p></p>
 
-<p>
+  <script type="text/ng-template" id="ionic-demo-modal.html">
+    <div class="modal">
+      <div ng-include="'demo-list.html'">
+      </div>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="demo-list.html">
+    <ion-header-bar class="bar-light">
+      <a class="button" ng-click="$demoModal.hide()" ng-if="$demo">
+        Cancel
+      </a>
+      <h1 class="title">All Demos</h1>
+    </ion-header-bar>
+    <ion-content>
+
+      <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Filter Demos..." ng-model="demoFilter">
+          </label>
+          <button class="button button-small" ng-click="demoFilter = ''">
+            Clear
+          </button>
+        </div>
+
+        <a class="item item-icon-right"
+          ng-class="{active: demo.id == $demo.id }"
+          ng-repeat="demo in $demos | filter:demoFilter"
+          ng-href="{{demo.href}}"
+          ng-bind="demo.component + ': ' + (demo.name | humanize)">
+          <i class="icon icon-accessory ion-chevron-right"></i>
+        </a>
+      </div>
+
+    </ion-content>
+  </script>
+
+  <style>
     body {
       margin-bottom: 44px;
     }
@@ -147,22 +88,7 @@
       color: #CCC;
       font-size: 18px;
     }
-  </p>
+  </style>
 
-<p>
-</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ionic-sample maintained by <a href="https://github.com/dwerdo">dwerdo</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+</body>
 </html>
